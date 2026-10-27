@@ -1,0 +1,271 @@
+/* ============================================================
+   INCIDENT LOOP - COMPREHENSIVE THEME SYSTEM & TOKENS
+   ============================================================ */
+
+/* 1. DARK THEME TOKENS (DEFAULT & [data-theme="dark"]) */
+:root,
+:root[data-theme="dark"] {
+  --bg-base: #060d1b;
+  --bg-deep: #030812;
+  --bg-surface: #0a1528;
+  --bg-surface-elevated: #0f1f3a;
+  --bg-glass: rgba(10, 21, 40, 0.78);
+  --bg-glass-elevated: rgba(15, 31, 58, 0.88);
+  --bg-glass-card: rgba(12, 25, 48, 0.75);
+  --bg-glass-hover: rgba(20, 40, 75, 0.82);
+
+  --cyan: #00f0ff;
+  --cyan-dim: #009aa3;
+  --cyan-glow: rgba(0, 240, 255, 0.28);
+  --cyan-subtle: rgba(0, 240, 255, 0.08);
+
+  --teal: #00e5a3;
+  --teal-dim: #00966b;
+  --teal-glow: rgba(0, 229, 163, 0.28);
+  --teal-subtle: rgba(0, 229, 163, 0.08);
+
+  --violet: #8b5cf6;
+  --violet-glow: rgba(139, 92, 246, 0.28);
+  --violet-subtle: rgba(139, 92, 246, 0.08);
+
+  --blue: #1e6bff;
+  --blue-glow: rgba(30, 107, 255, 0.28);
+  --blue-subtle: rgba(30, 107, 255, 0.08);
+
+  --amber: #f59e0b;
+  --amber-glow: rgba(245, 158, 11, 0.25);
+  --amber-subtle: rgba(245, 158, 11, 0.08);
+
+  --red: #ef4444;
+  --red-glow: rgba(239, 68, 68, 0.28);
+  --red-subtle: rgba(239, 68, 68, 0.08);
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-glass: rgba(0, 240, 255, 0.16);
+  --border-card: rgba(148, 163, 184, 0.14);
+  --border-focus: rgba(0, 240, 255, 0.5);
+
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.65);
+  --shadow-glow-cyan: 0 0 25px rgba(0, 240, 255, 0.2);
+  --shadow-glow-teal: 0 0 25px rgba(0, 229, 163, 0.2);
+
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  /* Background Aurora Gradients */
+  --body-bg-gradient:
+    radial-gradient(ellipse 75% 50% at 50% -10%, rgba(0, 240, 255, 0.13), transparent 70%),
+    radial-gradient(circle 650px at 85% 15%, rgba(139, 92, 246, 0.09), transparent 60%),
+    radial-gradient(circle 550px at 15% 85%, rgba(0, 229, 163, 0.07), transparent 60%),
+    radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.035) 1px, transparent 1px);
+  --body-bg-size: auto, auto, auto, 34px 34px;
+
+  --table-head-bg: rgba(0, 0, 0, 0.3);
+  --table-row-hover: rgba(20, 40, 75, 0.65);
+  --input-bg: rgba(0, 0, 0, 0.45);
+  --topbar-bg: rgba(6, 13, 27, 0.82);
+  --sidebar-bg: rgba(8, 17, 34, 0.82);
+  --assistant-drawer-bg: rgba(8, 17, 34, 0.95);
+  --modal-backdrop-bg: rgba(2, 6, 12, 0.85);
+}
+
+/* 2. LIGHT THEME TOKENS ([data-theme="light"]) */
+:root[data-theme="light"] {
+  --bg-base: #f6f8fc;
+  --bg-deep: #ebf0f7;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.88);
+  --bg-glass-elevated: rgba(255, 255, 255, 0.96);
+  --bg-glass-card: rgba(255, 255, 255, 0.92);
+  --bg-glass-hover: rgba(241, 245, 249, 0.95);
+
+  --cyan: #0284c7;
+  --cyan-dim: #0369a1;
+  --cyan-glow: rgba(2, 132, 199, 0.22);
+  --cyan-subtle: rgba(2, 132, 199, 0.08);
+
+  --teal: #0d9488;
+  --teal-dim: #0f766e;
+  --teal-glow: rgba(13, 148, 136, 0.22);
+  --teal-subtle: rgba(13, 148, 136, 0.08);
+
+  --violet: #7c3aed;
+  --violet-glow: rgba(124, 58, 237, 0.22);
+  --violet-subtle: rgba(124, 58, 237, 0.08);
+
+  --blue: #2563eb;
+  --blue-glow: rgba(37, 99, 235, 0.22);
+  --blue-subtle: rgba(37, 99, 235, 0.08);
+
+  --amber: #d97706;
+  --amber-glow: rgba(217, 119, 6, 0.2);
+  --amber-subtle: rgba(217, 119, 6, 0.08);
+
+  --red: #dc2626;
+  --red-glow: rgba(220, 38, 38, 0.22);
+  --red-subtle: rgba(220, 38, 38, 0.08);
+
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --text-dim: #94a3b8;
+
+  --border-subtle: rgba(15, 23, 42, 0.08);
+  --border-glass: rgba(2, 132, 199, 0.18);
+  --border-card: rgba(226, 232, 240, 0.9);
+  --border-focus: rgba(2, 132, 199, 0.6);
+
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.06), 0 2px 6px rgba(15, 23, 42, 0.03);
+  --shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.09);
+  --shadow-glow-cyan: 0 0 25px rgba(2, 132, 199, 0.16);
+  --shadow-glow-teal: 0 0 25px rgba(13, 148, 136, 0.16);
+
+  /* Background Aurora Gradients in Light Mode */
+  --body-bg-gradient:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(2, 132, 199, 0.1), transparent 70%),
+    radial-gradient(circle 600px at 90% 15%, rgba(124, 58, 237, 0.05), transparent 60%),
+    radial-gradient(circle 500px at 10% 85%, rgba(13, 148, 136, 0.04), transparent 60%),
+    radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+  --body-bg-size: auto, auto, auto, 34px 34px;
+
+  --table-head-bg: rgba(241, 245, 249, 0.7);
+  --table-row-hover: rgba(241, 245, 249, 0.85);
+  --input-bg: rgba(255, 255, 255, 0.95);
+  --topbar-bg: rgba(255, 255, 255, 0.88);
+  --sidebar-bg: rgba(255, 255, 255, 0.92);
+  --assistant-drawer-bg: rgba(255, 255, 255, 0.97);
+  --modal-backdrop-bg: rgba(15, 23, 42, 0.55);
+}
+
+/* ============================================================
+   GLOBAL STYLES & RESET
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+body {
+  min-height: 100vh;
+  min-width: 320px;
+  background-color: var(--bg-base);
+  background-image: var(--body-bg-gradient);
+  background-size: var(--body-bg-size);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  line-height: 1.5;
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+}
+
+h2 {
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+}
+
+h3 {
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+}
+
+p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+code, pre {
+  font-family: var(--font-mono);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.25);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cyan);
+}
+
+/* Selection Highlight */
+::selection {
+  background: var(--cyan-subtle);
+  color: var(--cyan);
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

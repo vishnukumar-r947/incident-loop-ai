@@ -1,0 +1,961 @@
+/* ============================================================
+   INCIDENT LOOP — MOBILE RESPONSIVENESS
+   Breakpoints: 768px (tablet), 640px, 430px, 375px, 320px
+   All fixes are additive — existing styles are preserved.
+   ============================================================ */
+
+/* ============================================================
+   1. GLOBAL OVERFLOW & BOX-SIZING GUARD
+   ============================================================ */
+html, body, #root {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* ============================================================
+   2. TABLET & BELOW (max-width: 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* Layout Shell */
+  .dashboard-layout {
+    overflow-x: hidden;
+  }
+
+  .dashboard-main-scrollable {
+    padding: 20px 16px 90px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .page-container {
+    gap: 20px;
+  }
+
+  /* Topbar */
+  .dashboard-topbar {
+    height: 60px;
+    padding: 0 16px;
+    gap: 12px;
+  }
+
+  .telemetry-clock {
+    display: none;
+  }
+
+  .mobile-nav-toggle {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .topbar-left {
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .topbar-right {
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .system-pill {
+    padding: 6px 8px;
+  }
+
+  .btn-create-incident {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+    gap: 0;
+  }
+
+  .plus-sign {
+    font-size: 1.3rem;
+    line-height: 1;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    min-width: unset;
+    transform: translateX(-100%);
+    z-index: 200;
+    box-shadow: 10px 0 40px rgba(0, 0, 0, 0.6);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 190;
+  }
+
+  .close-mobile-nav {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--bg-glass-hover);
+    border: 1px solid var(--border-subtle);
+  }
+
+  /* Hero Banner */
+  .hero-3d-banner {
+    grid-template-columns: 1fr;
+    padding: 28px 24px;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .hero-content {
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
+  .hero-title {
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+  }
+
+  .hero-desc {
+    font-size: 0.92rem;
+  }
+
+  .hero-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-3d-viewport {
+    order: -1;
+  }
+
+  /* Metrics Grid: 2 columns on tablet */
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .metric-value {
+    font-size: 2rem;
+  }
+
+  /* Dashboard 2-Col */
+  .dashboard-grid-2col {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Panel Headers */
+  .panel-header {
+    padding: 18px 20px 14px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* Tables: scroll inside container only — no page-level horizontal scroll */
+  .cyber-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--radius-md);
+  }
+
+  .cyber-table {
+    min-width: 600px;
+  }
+
+  .cyber-table th,
+  .cyber-table td {
+    padding: 12px 16px;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+
+  /* Cards Grid: single column */
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  /* Filters */
+  .filters-card {
+    padding: 14px 16px;
+  }
+
+  .filters-grid {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .search-item {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .filter-select {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 0.88rem;
+  }
+
+  .view-toggle {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .filter-summary {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* Investigation */
+  .investigation-split-grid,
+  .investigation-bottom-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .summary-card {
+    padding: 20px;
+  }
+
+  .summary-top {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .summary-action-col {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .summary-title-col h2 {
+    font-size: 1.4rem;
+  }
+
+  .telemetry-waterfall-card {
+    padding: 16px;
+  }
+
+  .trace-row.indent-1 { padding-left: 14px; }
+  .trace-row.indent-2 { padding-left: 28px; }
+
+  /* Incident Details Page */
+  .details-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .details-main-card {
+    padding: 20px;
+  }
+
+  .card-header-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .details-actions-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .status-transition-controls {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .meta-columns-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  /* Recovery Center */
+  .recommendations-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .recovery-meta-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 20px;
+  }
+
+  .recovery-meta-actions {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .guardrail-banner {
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  /* Timeline */
+  .timeline-container {
+    padding: 20px 16px;
+  }
+
+  .timeline-node {
+    gap: 14px;
+  }
+
+  .node-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  /* Reports */
+  .reports-layout {
+    gap: 16px;
+  }
+
+  .chart-panel {
+    padding: 16px;
+  }
+
+  .audit-preview-panel {
+    padding: 16px;
+  }
+
+  /* Integrations */
+  .integrations-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .integration-card {
+    padding: 20px;
+  }
+
+  .integration-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  /* Settings */
+  .settings-grid {
+    max-width: 100%;
+  }
+
+  .settings-card {
+    padding: 20px;
+  }
+
+  .theme-toggle-full {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .profile-details-grid {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  /* Modals — slide up from bottom on mobile */
+  .modal-backdrop {
+    padding: 12px;
+    align-items: flex-end;
+  }
+
+  .modal-content {
+    max-width: 100%;
+    padding: 24px 20px;
+    border-radius: var(--radius-md);
+    max-height: 92vh;
+    margin-bottom: 0;
+  }
+
+  .severity-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+
+  .modal-actions .btn-primary,
+  .modal-actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* AI Assistant — full-width panel above orb */
+  .assistant-panel {
+    width: 100%;
+    right: 0;
+    left: 0;
+    bottom: 76px;
+    height: 70vh;
+    max-height: 70vh;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    position: fixed;
+  }
+
+  .floating-assistant-container {
+    bottom: 16px;
+    right: 14px;
+    z-index: 150;
+  }
+
+  .floating-orb-button {
+    width: 52px;
+    height: 52px;
+  }
+
+  /* Buttons — touch-friendly minimum size */
+  .btn-primary,
+  .btn-secondary,
+  .btn-success {
+    min-height: 44px;
+    font-size: 0.9rem;
+  }
+
+  .btn-table-action {
+    padding: 8px 12px;
+    min-height: 36px;
+  }
+
+  .status-btn {
+    padding: 8px 12px;
+    min-height: 36px;
+    font-size: 0.82rem;
+  }
+
+  /* Page Header */
+  .page-header-row {
+    gap: 14px;
+  }
+
+  .page-header-row h1 {
+    font-size: clamp(1.4rem, 5vw, 2rem);
+  }
+
+  /* Alert Box */
+  .alert-box {
+    padding: 12px 14px;
+    font-size: 0.84rem;
+  }
+
+  /* Login page */
+  .login-full-page {
+    padding: 16px;
+  }
+
+  .login-container {
+    grid-template-columns: 1fr;
+  }
+
+  .login-visual-pane {
+    display: none;
+  }
+
+  .login-form-pane {
+    padding: 32px 24px;
+  }
+
+  .login-top-bar {
+    top: 14px;
+    right: 16px;
+  }
+
+  /* Theme toggle — don't shrink in header */
+  .theme-toggle-compact {
+    flex-shrink: 0;
+  }
+}
+
+
+/* ============================================================
+   4. SMALL MOBILE (max-width: 430px)
+   ============================================================ */
+
+@media (max-width: 430px) {
+
+  .dashboard-main-scrollable {
+    padding: 16px 12px 90px;
+  }
+
+  .page-container {
+    gap: 16px;
+  }
+
+  .dashboard-topbar {
+    padding: 0 12px;
+    height: 56px;
+  }
+
+  /* Hero */
+  .hero-3d-banner {
+    padding: 20px 16px;
+    gap: 16px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.4rem, 6vw, 1.75rem);
+  }
+
+  .hero-desc {
+    font-size: 0.86rem;
+    margin-bottom: 20px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Metrics */
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .metric-card {
+    padding: 16px;
+  }
+
+  .metric-value {
+    font-size: 1.75rem;
+  }
+
+  .metric-title {
+    font-size: 0.65rem;
+  }
+
+  /* Panel */
+  .panel-header {
+    padding: 14px 16px 12px;
+  }
+
+  .panel-header h3 {
+    font-size: 1rem;
+  }
+
+  /* Tables */
+  .cyber-table {
+    min-width: 520px;
+  }
+
+  .cyber-table th,
+  .cyber-table td {
+    padding: 10px 12px;
+    font-size: 0.78rem;
+  }
+
+  /* Investigation */
+  .summary-card {
+    padding: 16px;
+  }
+
+  .summary-title-col h2 {
+    font-size: 1.2rem;
+  }
+
+  /* Recovery */
+  .guardrail-banner {
+    padding: 16px;
+  }
+
+  .guardrail-icon {
+    font-size: 1.6rem;
+  }
+
+  /* Timeline */
+  .timeline-container {
+    padding: 16px 12px;
+  }
+
+  .timeline-node {
+    gap: 10px;
+  }
+
+  .marker-dot {
+    width: 12px;
+    height: 12px;
+  }
+
+  .timeline-card {
+    padding: 14px 16px;
+  }
+
+  .node-body h4 {
+    font-size: 1rem;
+  }
+
+  /* Reports */
+  .chart-panel {
+    padding: 14px;
+  }
+
+  /* Integrations */
+  .integration-card {
+    padding: 16px;
+  }
+
+  /* Settings */
+  .settings-card {
+    padding: 16px;
+  }
+
+  .config-row {
+    flex-direction: column;
+    gap: 2px;
+    font-size: 0.82rem;
+  }
+
+  .field-row {
+    flex-direction: column;
+    gap: 2px;
+    font-size: 0.82rem;
+    padding: 8px 0;
+  }
+
+  /* AI Assistant */
+  .assistant-panel {
+    height: 75vh;
+    max-height: 75vh;
+  }
+
+  /* Buttons */
+  .btn-primary,
+  .btn-secondary,
+  .btn-success {
+    font-size: 0.86rem;
+    padding: 10px 16px;
+  }
+
+  .row-actions {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* Incident card */
+  .incident-card {
+    padding: 16px;
+  }
+
+  .card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  /* Login */
+  .login-form-pane {
+    padding: 24px 18px;
+  }
+
+  /* Severity Grid in modal */
+  .severity-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .severity-option {
+    padding: 8px;
+    font-size: 0.78rem;
+  }
+
+  /* Rec cards */
+  .rec-card {
+    padding: 16px;
+  }
+
+  .rec-meta-row {
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+  }
+
+  /* Chips */
+  .summary-meta-chips {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* Modal */
+  .modal-content {
+    padding: 20px 16px;
+  }
+
+  /* Page header */
+  .page-header-row h1 {
+    font-size: clamp(1.25rem, 6vw, 1.6rem);
+  }
+
+  .breadcrumb-nav {
+    font-size: 0.65rem;
+  }
+
+  /* Orb */
+  .floating-orb-button {
+    width: 48px;
+    height: 48px;
+  }
+
+  .orb-symbol {
+    font-size: 1.3rem;
+  }
+}
+
+/* ============================================================
+   5. 375px
+   ============================================================ */
+@media (max-width: 375px) {
+
+  .dashboard-main-scrollable {
+    padding: 14px 10px 84px;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .metric-card {
+    padding: 14px 12px;
+  }
+
+  .metric-value {
+    font-size: 1.5rem;
+  }
+
+  .hero-3d-banner {
+    padding: 16px 12px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.25rem, 7vw, 1.5rem);
+  }
+
+  .theme-btn-compact {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+
+  .topbar-right {
+    gap: 6px;
+  }
+
+  .cyber-table {
+    min-width: 480px;
+  }
+}
+
+/* ============================================================
+   6. 320px EDGE CASE
+   ============================================================ */
+@media (max-width: 320px) {
+
+  .dashboard-topbar {
+    padding: 0 10px;
+    height: 52px;
+  }
+
+  .dashboard-main-scrollable {
+    padding: 12px 8px 84px;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .metric-value {
+    font-size: 1.35rem;
+  }
+
+  .hero-title {
+    font-size: 1.2rem;
+  }
+
+  .btn-create-incident {
+    width: 36px;
+    height: 36px;
+  }
+
+  .header-avatar-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.75rem;
+  }
+
+  .theme-toggle-compact {
+    gap: 0;
+    padding: 2px;
+  }
+
+  .theme-btn-compact {
+    width: 26px;
+    height: 26px;
+  }
+
+  .sidebar {
+    max-width: 300px;
+  }
+}
+
+/* ============================================================
+   7. OVERFLOW PREVENTION — card-level safeguards
+   ============================================================ */
+.glass-card,
+.metric-card,
+.incident-card,
+.rec-card,
+.integration-card,
+.settings-card,
+.timeline-card,
+.sim-history-item,
+.fact-item,
+.hypothesis-item,
+.attention-item {
+  overflow: hidden;
+  word-break: break-word;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make recharts responsive */
+.recharts-wrapper,
+.recharts-surface {
+  max-width: 100% !important;
+}
+
+/* ============================================================
+   8. TOUCH DEVICE IMPROVEMENTS
+   ============================================================ */
+@media (hover: none) and (pointer: coarse) {
+
+  .nav-item {
+    padding: 12px 14px;
+    min-height: 44px;
+  }
+
+  .btn-table-action,
+  .btn-delete-action,
+  .status-btn,
+  .lang-btn,
+  .toggle-btn,
+  .tag-btn,
+  .chip-btn,
+  .close-panel-btn {
+    min-height: 40px;
+    min-width: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .floating-orb-button {
+    min-width: 48px;
+    min-height: 48px;
+  }
+
+  /* Disable hover lift transforms that feel wrong on touch */
+  .metric-card:hover,
+  .incident-card:hover,
+  .rec-card:hover,
+  .integration-card:hover {
+    transform: none;
+  }
+}
+
+/* ============================================================
+   9. FORMS & INPUTS — prevent iOS auto-zoom on focus
+   ============================================================ */
+@media (max-width: 640px) {
+
+  .cyber-input,
+  .cyber-textarea,
+  .filter-input,
+  .filter-select,
+  .endpoint-input,
+  .status-dropdown {
+    font-size: 16px;
+    min-height: 44px;
+  }
+
+  .cyber-textarea {
+    min-height: 88px;
+  }
+
+  .form-group label {
+    font-size: 0.88rem;
+  }
+
+  .guide-steps {
+    font-size: 0.82rem;
+  }
+
+  .demo-credentials-box {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .btn-demo-fill {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+/* ============================================================
+   10. AI ASSISTANT — keep inside screen
+   ============================================================ */
+@media (max-width: 640px) {
+
+  .floating-assistant-container {
+    bottom: 16px;
+    right: 14px;
+  }
+
+  .orb-tooltip {
+    display: none;
+  }
+}
