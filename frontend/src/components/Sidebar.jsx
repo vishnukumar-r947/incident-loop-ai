@@ -127,7 +127,11 @@ function Sidebar({ mobileOpen, onClose, backendHealthy = true }) {
         {/* Sidebar Footer with User profile and working logout */}
         <div className="sidebar-bottom">
           <div className="user-profile-badge">
-            <div className="user-avatar">{user.avatar || 'IL'}</div>
+            <div className="user-avatar user-avatar-mascot" title="Incident Commander">
+  <span className="mascot-robot" role="img" aria-label="Incident Commander mascot">
+    🤖
+  </span>
+</div>
             <div className="user-info">
               <strong className="user-name">{user.name}</strong>
               <small className="user-role">{user.role} • {user.title || 'SRE'}</small>

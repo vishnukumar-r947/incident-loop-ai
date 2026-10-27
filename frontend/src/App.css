@@ -3,24 +3,33 @@
 /* ============================================================
    1. DASHBOARD SHELL & LAYOUT
    ============================================================ */
+
 .dashboard-layout {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
   width: 100%;
   background-color: var(--bg-base);
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
   transition: background-color 0.25s ease;
 }
+
+
 
 .dashboard-content-area {
   flex: 1;
   display: flex;
   flex-direction: column;
   min-width: 0;
-  min-height: 100vh;
+  min-height: 0;
+  height: 100%;
   position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
+
+
 
 .dashboard-main-scrollable {
   flex: 1;
@@ -52,12 +61,15 @@
 /* ============================================================
    2. SIDEBAR NAVIGATION
    ============================================================ */
+
 .sidebar {
   width: 280px;
   min-width: 280px;
   height: 100vh;
+  height: 100dvh;
   position: sticky;
   top: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   background: var(--sidebar-bg);
@@ -68,8 +80,12 @@
   z-index: 90;
   overflow-y: auto;
   box-sizing: border-box;
+  flex-shrink: 0;
   transition: transform var(--transition-normal), background 0.25s ease, border-color 0.25s ease;
+height: 100%;
+align-self: stretch;
 }
+
 
 .sidebar-brand {
   display: flex;
@@ -290,6 +306,25 @@
   font-size: 0.85rem;
   display: grid;
   place-items: center;
+}
+
+.user-avatar-mascot {
+  font-size: 1.4rem;
+  background: linear-gradient(135deg, #102b43, #164e63);
+  border: 1px solid rgba(34, 211, 238, 0.5);
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.15);
+  overflow: hidden;
+}
+
+.user-avatar-mascot span {
+  display: block;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.user-avatar-mascot:hover span {
+  transform: scale(1.12);
 }
 
 .user-info {
@@ -807,11 +842,22 @@
 /* ============================================================
    7. 2-COLUMN DASHBOARD SPLIT & PANELS
    ============================================================ */
+
 .dashboard-grid-2col {
   display: grid;
-  grid-template-columns: 1fr 380px;
+  grid-template-columns: minmax(0, 1fr) 380px;
   gap: 24px;
+  align-items: start;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
+
+.dashboard-grid-2col > * {
+  min-width: 0;
+}
+
+
 
 .side-column {
   display: flex;
@@ -3934,4 +3980,17 @@ color: #ffffff;
   padding: 4px 10px;
   border-radius: 6px;
   cursor: pointer;
+}
+
+.user-avatar-mascot {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  display: grid;
+  place-items: center;
+  font-size: 26px;
+  background: linear-gradient(135deg, #102b43, #164e63);
+  border: 1px solid rgba(34, 211, 238, 0.5);
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.15);
 }
