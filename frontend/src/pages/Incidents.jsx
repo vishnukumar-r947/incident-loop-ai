@@ -14,21 +14,51 @@ function Incidents({ onOpenCreateIncident, setActiveIncident }) {
   const [updatingId, setUpdatingId] = useState(null)
   const navigate = useNavigate()
 
-  async function loadIncidents() {
-    try {
-      setLoading(true)
-      const response = await fetch('${API_URL}/api/incidents')
-      if (!response.ok) throw new Error('Failed to load incident catalog')
-      const data = await response.json()
-      setIncidents(Array.isArray(data) ? data : [])
-      setError('')
-    } catch (err) {
-      console.error(err)
-      setError('Unable to load incidents from MongoDB. Check backend status.')
-    } finally {
-      setLoading(false)
+async function loadIncidents() {
+  const MAX_RETRIES = 3;
+  const RETRY_DELAY = 3000;
+
+  setLoading(true);
+  setError('');
+
+  try {
+    for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+      try {
+        console.log(`Loading incidents: attempt ${attempt}/${MAX_RETRIES}`);
+
+        const response = await fetch(`${API_URL}/api/incidents`);
+
+        if (!response.ok) {
+          throw new Error(`Request failed with status ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        setIncidents(Array.isArray(data) ? data : []);
+        setError('');
+        return;
+      } catch (err) {
+        console.error(`Incident loading attempt ${attempt} failed:`, err);
+
+        if (attempt === MAX_RETRIES) {
+          throw err;
+        }
+
+        await new Promise(resolve => setTimeout(resolve, RETRY_DELAY));
+      }
     }
+  } catch (err) {
+    console.error('Unable to load incidents:', err);
+
+    setError(
+      'Unable to load incidents. The server may be waking up. Please try again.'
+    );
+  } finally {
+    setLoading(false);
   }
+}
+
+
 
   useEffect(() => {
     loadIncidents()
