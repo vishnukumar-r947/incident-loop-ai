@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import ThemeToggle from './components/ThemeToggle'
 import incidentLoopLogo from './assets/incident-loop-logo.png.jpeg'
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+const API_BASE_URL = import.meta.env.VITE_API_URL || '${API_URL}'
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || ''
 
 function Login() {

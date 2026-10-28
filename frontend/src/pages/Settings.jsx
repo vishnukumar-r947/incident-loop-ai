@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import ThemeToggle from '../components/ThemeToggle'
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+const API_BASE_URL = import.meta.env.VITE_API_URL || '${API_URL}'
 
 function Settings() {
   const [aiStatus, setAiStatus] = useState(null)

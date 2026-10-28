@@ -4,7 +4,7 @@ function BackendTest() {
   const [status, setStatus] = useState('Connecting...')
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/health')
+    fetch('${API_URL}/api/health')
       .then((response) => response.json())
       .then((data) => setStatus(data.status))
       .catch(() => setStatus('Connection failed'))

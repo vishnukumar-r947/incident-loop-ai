@@ -14,7 +14,7 @@ function IncidentDetails({ setActiveIncident }) {
     async function fetchIncident() {
       try {
         setLoading(true)
-        const response = await fetch(`http://localhost:5000/api/incidents/${id}`)
+        const response = await fetch(`${API_URL}/api/incidents/${id}`)
         if (!response.ok) throw new Error('Incident not found in cluster database')
         const data = await response.json()
         setIncident(data)
@@ -32,7 +32,7 @@ function IncidentDetails({ setActiveIncident }) {
   async function handleStatusChange(newStatus) {
     try {
       setUpdating(true)
-      const response = await fetch(`http://localhost:5000/api/incidents/${id}/status`, {
+      const response = await fetch(`${API_URL}/api/incidents/${id}/status`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: newStatus }),

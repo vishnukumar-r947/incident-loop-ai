@@ -17,7 +17,7 @@ function Investigation({ setActiveIncident }) {
   useEffect(() => {
     async function fetchCatalog() {
       try {
-        const res = await fetch('http://localhost:5000/api/incidents')
+        const res = await fetch('${API_URL}/api/incidents')
         if (res.ok) {
           const list = await res.json()
           setIncidents(list)
@@ -51,7 +51,7 @@ function Investigation({ setActiveIncident }) {
         setAiDiagnosis(null)
 
         // Trigger POST to start or fetch investigation
-        const res = await fetch(`http://localhost:5000/api/investigation/${selectedId}`, {
+        const res = await fetch(`${API_URL}/api/investigation/${selectedId}`, {
           method: 'POST',
         })
 
@@ -80,7 +80,7 @@ function Investigation({ setActiveIncident }) {
     if (!investigationData) return
     try {
       setAiAnalyzing(true)
-      const res = await fetch('http://localhost:5000/api/ai/chat', {
+      const res = await fetch('${API_URL}/api/ai/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

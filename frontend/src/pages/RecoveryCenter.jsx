@@ -22,7 +22,7 @@ function RecoveryCenter({ setActiveIncident }) {
   useEffect(() => {
     async function fetchCatalog() {
       try {
-        const res = await fetch('http://localhost:5000/api/incidents')
+        const res = await fetch('${API_URL}/api/incidents')
         if (res.ok) {
           const list = await res.json()
           setIncidents(list)
@@ -47,7 +47,7 @@ function RecoveryCenter({ setActiveIncident }) {
     try {
       setLoading(true)
       setError('')
-      const res = await fetch(`http://localhost:5000/api/recovery/${selectedId}`)
+      const res = await fetch(`${API_URL}/api/recovery/${selectedId}`)
       if (!res.ok) throw new Error('Failed to load recovery recommendations')
       const data = await res.json()
       setRecoveryData(data)
@@ -71,7 +71,7 @@ function RecoveryCenter({ setActiveIncident }) {
 
     try {
       setSimulating(true)
-      const res = await fetch(`http://localhost:5000/api/recovery/${selectedId}/simulate`, {
+      const res = await fetch(`${API_URL}/api/recovery/${selectedId}/simulate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -95,7 +95,7 @@ function RecoveryCenter({ setActiveIncident }) {
   // Mark incident as Resolved
   async function handleMarkResolved() {
     try {
-      const res = await fetch(`http://localhost:5000/api/incidents/${selectedId}/status`, {
+      const res = await fetch(`${API_URL}/api/incidents/${selectedId}/status`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: 'Resolved' }),

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import API_URL from './api';
 
 function CreateIncident({ onIncidentCreated }) {
   const [title, setTitle] = useState('')
@@ -12,7 +13,7 @@ function CreateIncident({ onIncidentCreated }) {
     setMessage('Creating incident...')
 
     try {
-      const response = await fetch('http://localhost:5000/api/incidents', {
+      const response = await fetch(`${API_URL}/api/incidents`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title, service, severity, description })

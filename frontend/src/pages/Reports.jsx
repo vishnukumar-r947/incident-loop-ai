@@ -10,7 +10,7 @@ function Reports() {
     async function loadData() {
       try {
         setLoading(true)
-        const res = await fetch('http://localhost:5000/api/incidents')
+        const res = await fetch('${API_URL}/api/incidents')
         if (!res.ok) throw new Error('Failed to load incident reports')
         const data = await res.json()
         setIncidents(Array.isArray(data) ? data : [])

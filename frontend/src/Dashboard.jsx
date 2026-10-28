@@ -11,7 +11,7 @@ async function loadIncidents() {
   try {
     setError('')
 
-    const response = await fetch('http://localhost:5000/api/incidents')
+    const response = await fetch('${API_URL}/api/incidents')
 
     if (!response.ok) {
       throw new Error('Unable to load incidents')

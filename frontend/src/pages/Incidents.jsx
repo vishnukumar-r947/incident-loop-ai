@@ -17,7 +17,7 @@ function Incidents({ onOpenCreateIncident, setActiveIncident }) {
   async function loadIncidents() {
     try {
       setLoading(true)
-      const response = await fetch('http://localhost:5000/api/incidents')
+      const response = await fetch('${API_URL}/api/incidents')
       if (!response.ok) throw new Error('Failed to load incident catalog')
       const data = await response.json()
       setIncidents(Array.isArray(data) ? data : [])
@@ -38,7 +38,7 @@ function Incidents({ onOpenCreateIncident, setActiveIncident }) {
   async function handleStatusChange(incidentId, newStatus) {
     try {
       setUpdatingId(incidentId)
-      const response = await fetch(`http://localhost:5000/api/incidents/${incidentId}/status`, {
+      const response = await fetch(`${API_URL}/api/incidents/${incidentId}/status`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: newStatus }),
@@ -67,7 +67,7 @@ function Incidents({ onOpenCreateIncident, setActiveIncident }) {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/incidents/${incidentId}`, {
+      const response = await fetch(`${API_URL}/api/incidents/${incidentId}`, {
         method: 'DELETE',
       })
 

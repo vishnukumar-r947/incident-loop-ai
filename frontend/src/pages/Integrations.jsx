@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { formatTimeOnlyIST } from '../utils/timeUtils'
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+const API_BASE_URL = import.meta.env.VITE_API_URL || '${API_URL}'
 
 function Integrations() {
   const [integrations, setIntegrations] = useState([

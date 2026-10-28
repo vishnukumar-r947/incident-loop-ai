@@ -6,6 +6,7 @@ import Header from './components/Header'
 import CreateIncidentModal from './components/CreateIncidentModal'
 import FloatingAiAssistant from './components/FloatingAiAssistant'
 import ProtectedRoute from './components/ProtectedRoute'
+import API_URL from './api';
 
 // Pages
 import LandingPage from './pages/LandingPage'
@@ -32,7 +33,7 @@ function AppLayout() {
   useEffect(() => {
     async function checkHealth() {
       try {
-        const res = await fetch('http://localhost:5000/api/health')
+        const res = await fetch(`${API_URL}/api/health`)
         if (res.ok) {
           setBackendStatus('healthy')
         } else {

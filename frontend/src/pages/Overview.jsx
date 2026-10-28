@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import API_URL from '../api';
 import { Link, useNavigate } from 'react-router-dom'
 import ThreeAiCore from '../components/ThreeAiCore'
 
@@ -11,7 +12,7 @@ function Overview({ onOpenCreateIncident, setActiveIncident }) {
   async function loadIncidents() {
     try {
       setLoading(true)
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+      const API_URL = import.meta.env.VITE_API_URL || '${API_URL}'
 const response = await fetch(`${API_URL}/api/incidents`)
       if (!response.ok) throw new Error('Unable to fetch incidents from cluster')
       const data = await response.json()
@@ -19,7 +20,7 @@ const response = await fetch(`${API_URL}/api/incidents`)
       setError('')
     } catch (err) {
       console.error(err)
-      setError('Unable to reach backend database. Please ensure backend is running at http://localhost:5000.')
+      setError('Unable to reach backend database. Please ensure backend is running at ${API_URL}.')
     } finally {
       setLoading(false)
     }
