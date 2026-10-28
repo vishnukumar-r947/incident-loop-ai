@@ -11,7 +11,8 @@ function Overview({ onOpenCreateIncident, setActiveIncident }) {
   async function loadIncidents() {
     try {
       setLoading(true)
-      const response = await fetch('http://localhost:5000/api/incidents')
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+const response = await fetch(`${API_URL}/api/incidents`)
       if (!response.ok) throw new Error('Unable to fetch incidents from cluster')
       const data = await response.json()
       setIncidents(Array.isArray(data) ? data : [])
