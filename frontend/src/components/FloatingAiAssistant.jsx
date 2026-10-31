@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef } from 'react'
 import { formatTimeOnlyIST } from '../utils/timeUtils'
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || '${API_URL}'
+const API_BASE_URL = (
+  import.meta.env.VITE_API_URL ||
+  'https://incident-loop-ai.onrender.com'
+).replace(/\/+$/, '')
 
 function FloatingAiAssistant({ activeIncident }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -174,7 +177,7 @@ function FloatingAiAssistant({ activeIncident }) {
         ...prev,
         {
           role: 'assistant',
-          text: 'Unable to communicate with the AI engine. Verify that the Incident Loop backend is running at ${API_URL}.',
+          text: `Unable to communicate with the AI engine. Verify that the Incident Loop backend is running at ${API_BASE_URL}.`,
           confidence: 'Connection Failed',
           isError: true,
           timestamp: formatTimeOnlyIST(new Date()),

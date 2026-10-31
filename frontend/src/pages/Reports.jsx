@@ -1,5 +1,6 @@
 import { useEffect, useState, useMemo } from 'react'
 import { formatDateTimeIST } from '../utils/timeUtils'
+import API_URL from '../api';
 
 function Reports() {
   const [incidents, setIncidents] = useState([])
@@ -10,7 +11,7 @@ function Reports() {
     async function loadData() {
       try {
         setLoading(true)
-        const res = await fetch('${API_URL}/api/incidents')
+        const res = await fetch(`${API_URL}/api/incidents`)
         if (!res.ok) throw new Error('Failed to load incident reports')
         const data = await res.json()
         setIncidents(Array.isArray(data) ? data : [])

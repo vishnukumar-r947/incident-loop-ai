@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { formatTimeOnlyIST, formatDateTimeIST } from '../utils/timeUtils'
+import API_URL from '../api';
 
 function Investigation({ setActiveIncident }) {
   const { id } = useParams()
@@ -17,7 +18,7 @@ function Investigation({ setActiveIncident }) {
   useEffect(() => {
     async function fetchCatalog() {
       try {
-        const res = await fetch('${API_URL}/api/incidents')
+        const res = await fetch(`${API_URL}/api/incidents`)
         if (res.ok) {
           const list = await res.json()
           setIncidents(list)
@@ -76,28 +77,40 @@ function Investigation({ setActiveIncident }) {
   }, [selectedId, setActiveIncident])
 
   // Trigger Gemini Deep Diagnostic
+
   async function runGeminiDiagnostic() {
-    if (!investigationData) return
+    if (!investigationData) return;
+
     try {
-      setAiAnalyzing(true)
-      const res = await fetch('${API_URL}/api/ai/chat', {
+      setAiAnalyzing(true);
+
+      const res = await fetch(`${API_URL}/api/ai/chat`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           incidentId: investigationData.incidentId,
-          message: `Perform an in-depth SRE root-cause diagnosis for ${investigationData.incidentId}. Evaluate confirmed facts vs. working hypotheses, identify critical missing evidence, and synthesize low-risk mitigation advice.`,
+          message:
+            'Perform an in-depth SRE root-cause diagnosis for this incident. Identify likely root causes, supporting evidence, missing evidence, diagnostic steps, and safe recovery recommendations.',
         }),
-      })
+      });
 
-      if (!res.ok) throw new Error('AI analysis call failed')
-      const data = await res.json()
-      setAiDiagnosis(data)
+      if (!res.ok) {
+        throw new Error(`AI analysis request failed: ${res.status}`);
+      }
+
+      const data = await res.json();
+      setAiDiagnosis(data);
     } catch (err) {
-      alert(`AI diagnostic failed: ${err.message}`)
+      console.error('AI diagnostic failed:', err);
+      alert(`AI diagnostic failed: ${err.message}`);
     } finally {
-      setAiAnalyzing(false)
+      setAiAnalyzing(false);
     }
   }
+
+
 
   return (
     <div className="page-container" id="investigation-page">

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { formatDateTimeIST } from '../utils/timeUtils'
+import API_URL from '../api';
 
 function IncidentDetails({ setActiveIncident }) {
   const { id } = useParams()

@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { formatDateTimeIST } from '../utils/timeUtils'
+import API_URL from '../api';
 
 function Timeline({ setActiveIncident }) {
   const [incidents, setIncidents] = useState([])
@@ -12,7 +13,7 @@ function Timeline({ setActiveIncident }) {
     async function loadData() {
       try {
         setLoading(true)
-        const res = await fetch('${API_URL}/api/incidents')
+        const res = await fetch(`${API_URL}/api/incidents`)
         if (!res.ok) throw new Error('Failed to load incident history')
         const data = await res.json()
         setIncidents(Array.isArray(data) ? data : [])

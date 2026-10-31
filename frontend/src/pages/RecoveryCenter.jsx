@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { formatTimeOnlyIST } from '../utils/timeUtils'
+import API_URL from '../api';
 
 function RecoveryCenter({ setActiveIncident }) {
   const { id } = useParams()
@@ -22,7 +23,7 @@ function RecoveryCenter({ setActiveIncident }) {
   useEffect(() => {
     async function fetchCatalog() {
       try {
-        const res = await fetch('${API_URL}/api/incidents')
+        const res = await fetch(`${API_URL}/api/incidents`)
         if (res.ok) {
           const list = await res.json()
           setIncidents(list)

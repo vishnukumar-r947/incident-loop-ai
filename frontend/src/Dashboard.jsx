@@ -1,6 +1,7 @@
 import './Dashboard.css'
 import CreateIncident from './CreateIncident'
 import { useEffect, useState, useCallback } from 'react'
+import API_URL from './api';
 
 function Dashboard() {
 const [incidents, setIncidents] = useState([])
@@ -11,7 +12,7 @@ async function loadIncidents() {
   try {
     setError('')
 
-    const response = await fetch('${API_URL}/api/incidents')
+    const response = await fetch(`${API_URL}/api/incidents`)
 
     if (!response.ok) {
       throw new Error('Unable to load incidents')
